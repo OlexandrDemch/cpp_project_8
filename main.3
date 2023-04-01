@@ -1,0 +1,38 @@
+#include <iostream>
+
+void countElements(int arr[], int size)
+{
+    int positiveCount = 0;
+    int negativeCount = 0;
+    int zeroCount = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] > 0)
+        {
+            positiveCount++;
+        }
+        else if (arr[i] < 0)
+        {
+            negativeCount++;
+        }
+        else
+        {
+            zeroCount++;
+        }
+    }
+
+    std::cout << "Positive elements: " << positiveCount << std::endl;
+    std::cout << "Negative elements: " << negativeCount << std::endl;
+    std::cout << "Zero elements: " << zeroCount << std::endl;
+}
+
+int main()
+{
+    int arr[] = { 1, -2, 0, 3, -4, 5 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    countElements(arr, size);
+
+    return 0;
+}
