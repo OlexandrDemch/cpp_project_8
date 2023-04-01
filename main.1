@@ -1,0 +1,98 @@
+#include <iostream>
+bool isLeapYear(int year) {
+    if (year % 4 != 0) {
+        return false;
+    } else if (year % 400 == 0) {
+        return true;
+    } else if (year % 100 == 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+int daysBetween(int day1, int month1, int year1, int day2, int month2, int year2) {
+    int daysInMonth[] = {31, 28 + isLeapYear(year1), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    int days = 0;
+    for (int i = month1 - 1; i < 12; i++) {
+        days += daysInMonth[i];
+    }
+    days -= day1;
+    days += day2;
+    for (int i = 0; i < month2 - 1; i++) {
+        days += daysInMonth[i];
+    }
+    if (year1 != year2) {
+        for (int i = year1 + 1; i < year2; i++) {
+            days += 365 + isLeapYear(i);
+        }
+    }
+
+    return days;
+}
+
+int main() {
+    int day1 = 1;
+    int month1 = 1;
+    int year1 = 2022;
+
+    int day2 = 1;
+    int month2 = 4;
+    int year2 = 2023;
+
+    int days = daysBetween(day1, month1, year1, day2, month2, year2);
+    std::cout << "Різниця в днях між " << day1 << "." << month1 << "." << year1;
+    std::cout << " та " << day2 << "." << month2 << "." << year2 << " становить " << days << " днів." << std::endl;
+
+    return 0;
+}
+#include <iostream>
+
+bool isLeapYear(int year) {
+    if (year % 4 != 0) {
+        return false;
+    } else if (year % 400 == 0) {
+        return true;
+    } else if (year % 100 == 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+int daysBetween(int day1, int month1, int year1, int day2, int month2, int year2) {
+    int daysInMonth[] = {31, 28 + isLeapYear(year1), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int days = 0;
+    for (int i = month1 - 1; i < 12; i++) {
+        days += daysInMonth[i];
+    }
+    days -= day1;
+    days += day2;
+    for (int i = 0; i < month2 - 1; i++) {
+        days += daysInMonth[i];
+    }
+    if (year1 != year2) {
+        for (int i = year1 + 1; i < year2; i++) {
+            days += 365 + isLeapYear(i);
+        }
+    }
+
+    return days;
+}
+
+int main() {
+    int day1 = 1;
+    int month1 = 1;
+    int year1 = 2022;
+
+    int day2 = 1;
+    int month2 = 4;
+    int year2 = 2023;
+
+    int days = daysBetween(day1, month1, year1, day2, month2, year2);
+    std::cout << "Різниця в днях між " << day1 << "." << month1 << "." << year1;
+    std::cout << " та " << day2 << "." << month2 << "." << year2 << " становить " << days << " днів." << std::endl;
+
+    return 0;
+}
